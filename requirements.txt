@@ -1,0 +1,7 @@
+Flask
+requests
+python-dotenv
+nltk
+beautifulsoup4
+pymongo
+werkzeug
