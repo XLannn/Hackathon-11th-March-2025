@@ -1,4 +1,11 @@
 *Report on AI-Driven Safety and Privacy Website*
+By
+Anshaj Shaji - Developer Backend
+Adithyan SM - Developer Backend
+Alan Biji Alex - Developer Frontend
+Gouri SL - Documentation
+
+Technologies Used : Python, HTML, JavaScript
 
 *Introduction*
 This report outlines the features, functionality, and impact of the website designed to improve user safety and privacy online. The platform integrates three core tools aimed at protecting users from online scams, enhancing data security awareness, and enabling anonymous crime reporting.
