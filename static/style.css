@@ -1,0 +1,66 @@
+body {
+    background-image: url('/static/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    color: #F5F5DC;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.85); /* Dark overlay to improve readability */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;  /* Center aligns everything inside the form */
+}
+
+input, textarea {
+    width: 90%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 2px solid #8B4513;
+    border-radius: 8px;
+    background-color: #3b2f2f;
+    color: #F5F5DC;
+}
+
+button {
+    width: 60%;                      /* Smaller width for improved style */
+    padding: 10px 15px;             /* Balanced padding */
+    margin-top: 10px;               /* Adds space between inputs and buttons */
+    border: none;                   /* Cleaner look */
+    border-radius: 20px;            /* Rounded buttons for a sleek feel */
+    background-color: #8B4513;      /* Dark brown for buttons */
+    color: #F5F5DC;                 /* Beige text */
+    font-weight: bold;              /* Makes text pop */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Soft glow effect */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #A0522D;      /* Lighter brown on hover */
+    transform: scale(1.05);         /* Slight zoom effect */
+}
+
+#result, #tos-result, #crime-status {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
