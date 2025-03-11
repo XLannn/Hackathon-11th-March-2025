@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import requests
 import os
 from dotenv import load_dotenv
@@ -13,13 +14,14 @@ load_dotenv()
 
 # Flask App Setup
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 
 # Google Safe Browsing API Key
 SAFE_BROWSING_API = os.getenv("SAFE_BROWSING_API")
 SAFE_BROWSING_URL = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
 
 # MongoDB Configuration (Anonymous Crime Reports)
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://192.168.1.14:27017/")  # Remote MongoDB IP
 db = client["crime_reports"]
 collection = db["reports"]
 
