@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import requests
 import os
 from dotenv import load_dotenv
-import nltk
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 import re
@@ -76,8 +75,6 @@ def check_url():
 # --------------------------------------
 # TERMS & CONDITIONS ANALYZER
 # --------------------------------------
-nltk.download('punkt')
-
 def analyze_terms(url):
     try:
         page = requests.get(url.strip(), timeout=5)
