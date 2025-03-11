@@ -18,8 +18,10 @@ app = Flask(__name__)
 SAFE_BROWSING_API = os.getenv("SAFE_BROWSING_API")
 SAFE_BROWSING_URL = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
 
-# MongoDB Configuration (Anonymous Crime Reports)
-client = MongoClient("mongodb://192.168.1.14:27017/")  # Remote MongoDB IP
+# MongoDB Configuration (Remote Connection)
+MONGO_IP = "192.168.84.103"  # Updated IP Address
+MONGO_PORT = 27017
+client = MongoClient(f"mongodb://{MONGO_IP}:{MONGO_PORT}/")
 db = client["crime_reports"]
 collection = db["reports"]
 
