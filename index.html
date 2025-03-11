@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Safety Tool</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>🔒 Cyber Safety Tool 🔒</h1>
+
+    <h2>🛡️ Phishing URL Checker 🛡️</h2>
+    <form id="phishing-form">
+        <input type="text" id="url" name="url" placeholder="🌐 Enter website URL">
+        <button type="submit">🔍 Check</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('phishing-form').onsubmit = async function(e) {
+            e.preventDefault();
+            let url = document.getElementById('url').value;
+            let response = await fetch('/check-url', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ url })
+            });
+            let result = await response.json();
+            document.getElementById('result').innerHTML = 
+                result.status.includes('Risk Detected') 
+                ? `<strong>🟥 Status:</strong> ${result.status}` 
+                : `<strong>🟢 Status:</strong> ${result.status}`;
+        };
+    </script>
+
+    <h2>📜 Terms & Conditions Analyzer 📜</h2>
+    <form id="tos-form">
+        <input type="text" id="tos_url" placeholder="🔗 Enter TOS URL">
+        <button type="submit">📋 Analyze</button>
+    </form>
+    <div id="tos-result"></div>
+
+    <script>
+        document.getElementById('tos-form').onsubmit = async function(e) {
+            e.preventDefault();
+            let url = document.getElementById('tos_url').value;
+            let response = await fetch('/analyze-tos', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ tos_url: url })
+            });
+            let result = await response.json();
+            document.getElementById('tos-result').innerHTML = `
+                <strong>${result.status.includes('Risk Detected') ? '🟥' : '🟢'} Status:</strong> ${result.status} <br>
+                <strong>⚠️ Risks:</strong> ${result.risks.join(', ') || 'None'} <br>
+                <strong>🟩 Safe Practices:</strong> ${result.safe_practices.join(', ') || 'None'}
+            `;
+        };
+    </script>
+
+    <h2>🚨 Anonymous Crime Reporting 🚨</h2>
+    <form id="crime-form">
+        <input type="text" id="name" placeholder="🙍‍♂️ Your Name">
+        <textarea id="description" placeholder="✏️ Describe the crime"></textarea>
+        <input type="text" id="location" placeholder="📍 Location">
+        <button type="submit">📨 Submit</button>
+    </form>
+    <div id="crime-status"></div>
+
+    <script>
+        document.getElementById('crime-form').onsubmit = async function(e) {
+            e.preventDefault();
+            let name = document.getElementById('name').value;
+            let description = document.getElementById('description').value;
+            let location = document.getElementById('location').value;
+
+            let response = await fetch('/report-crime', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, description, location })
+            });
+            let result = await response.json();
+            document.getElementById('crime-status').innerText = `✅ ${result.message}`;
+        };
+    </script>
+</body>
+</html>
